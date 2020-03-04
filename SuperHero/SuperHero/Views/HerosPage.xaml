@@ -1,0 +1,373 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SuperHero.Views.HerosPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:extension="clr-namespace:Xamarin.Forms.Skeleton;assembly=Xamarin.Forms.Skeleton"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:helpers="clr-namespace:SuperHero.Helpers"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Name="PageHeros"
+    mc:Ignorable="d">
+
+    <ContentPage.Content>
+
+        <StackLayout Spacing="0">
+
+            <Grid
+                ColumnSpacing="0"
+                HorizontalOptions="FillAndExpand"
+                RowSpacing="0"
+                VerticalOptions="FillAndExpand">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+
+                </Grid.RowDefinitions>
+
+                <!--  TESTE BUSCA MARVEL  -->
+                <StackLayout
+                    Grid.Row="0"
+                    Padding="{OnPlatform iOS='42,50,42,0',
+                                         Android='42,12,42,0'}"
+                    HorizontalOptions="FillAndExpand"
+                    Orientation="Horizontal"
+                    Spacing="0"
+                    VerticalOptions="Start">
+
+                    <Label
+                        FontFamily="{StaticResource font_Roboto_Black}"
+                        FontSize="{OnPlatform Android='19',
+                                              iOS='16'}"
+                        Text="BUSCA MARVEL"
+                        TextColor="{StaticResource AccentColor}"
+                        VerticalOptions="Center" />
+
+                    <Label
+                        FontFamily="{StaticResource font_Roboto_Light}"
+                        FontSize="{OnPlatform Android='19',
+                                              iOS='16'}"
+                        Text="TESTE FRONT-END"
+                        TextColor="{StaticResource AccentColor}"
+                        VerticalOptions="Center" />
+
+                </StackLayout>
+
+                <!--  BOXVIEW  -->
+                <StackLayout
+                    Grid.Row="1"
+                    Padding="42,0"
+                    Spacing="0">
+
+                    <BoxView
+                        BackgroundColor="{StaticResource AccentColor}"
+                        HeightRequest="5"
+                        HorizontalOptions="Start"
+                        WidthRequest="{OnPlatform Android='60',
+                                                  iOS='52'}" />
+
+                </StackLayout>
+
+                <!--  BUSCA NOME DO PERSONAGEM  -->
+                <StackLayout
+                    Grid.Row="2"
+                    Padding="42,20"
+                    HorizontalOptions="FillAndExpand"
+                    Spacing="0"
+                    VerticalOptions="Start">
+
+                    <Entry
+                        x:Name="entryBusca"
+                        x:FieldModifier="Public"
+                        BackgroundColor="Transparent"
+                        Placeholder="Nome do Personagem"
+                        TextChanged="Entry_TextChanged"
+                        Visual="Material" />
+
+                </StackLayout>
+
+                <!--  HEADER AND LISTVIEW  -->
+                <StackLayout
+                    Grid.Row="3"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand">
+
+                    <!--  LABEL NOME  -->
+                    <StackLayout Padding="10" BackgroundColor="{StaticResource AccentColor}">
+
+                        <Label
+                            Margin="120,0"
+                            FontFamily="{StaticResource font_Roboto_Light}"
+                            FontSize="{OnPlatform Android='19',
+                                                  iOS='16'}"
+                            HorizontalOptions="Start"
+                            Text="NOME"
+                            TextColor="{StaticResource InverseTextColor}"
+                            VerticalOptions="Center" />
+
+                    </StackLayout>
+
+                    <!--  LISTA DE HEROIS  -->
+                    <ListView
+                        x:Name="listViewHeros"
+                        extension:Skeleton.Animation="Fade"
+                        extension:Skeleton.IsBusy="{Binding IsBusy}"
+                        extension:Skeleton.IsParent="True"
+                        x:FieldModifier="Public"
+                        BackgroundColor="Transparent"
+                        CachingStrategy="RecycleElement"
+                        HasUnevenRows="True"
+                        ItemTapped="ListView_ItemTapped"
+                        ItemsSource="{Binding Heros}"
+                        SeparatorVisibility="None"
+                        VerticalOptions="FillAndExpand"
+                        Visual="Material">
+
+                        <ListView.ItemTemplate>
+
+                            <DataTemplate>
+
+                                <ViewCell>
+
+                                    <Grid
+                                        ColumnSpacing="10"
+                                        HorizontalOptions="FillAndExpand"
+                                        VerticalOptions="FillAndExpand">
+
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <!--  AVATAR  -->
+                                        <StackLayout
+                                            Grid.Row="0"
+                                            Grid.Column="0"
+                                            Padding="45,12,0,12">
+
+                                            <Frame
+                                                Padding="0"
+                                                extension:Skeleton.BackgroundColor="{StaticResource LoadingSkeleton}"
+                                                extension:Skeleton.IsBusy="{Binding IsBusy}"
+                                                extension:Skeleton.IsParent="True"
+                                                CornerRadius="{OnPlatform Android=38,
+                                                                          iOS=45}"
+                                                HasShadow="False"
+                                                HeightRequest="{OnPlatform Android=76,
+                                                                           iOS=90}"
+                                                IsClippedToBounds="true"
+                                                WidthRequest="{OnPlatform Android=76,
+                                                                          iOS=90}">
+
+                                                <ffimageloading:CachedImage
+                                                    extension:Skeleton.BackgroundColor="{StaticResource LoadingSkeleton}"
+                                                    extension:Skeleton.Hide="True"
+                                                    extension:Skeleton.IsBusy="{Binding IsBusy}"
+                                                    Aspect="AspectFit"
+                                                    FadeAnimationEnabled="true"
+                                                    HeightRequest="200"
+                                                    Source="{Binding Thumbnail.PathImageSource}" />
+
+                                            </Frame>
+
+                                        </StackLayout>
+
+                                        <!--  HERONAME  -->
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            extension:Skeleton.BackgroundColor="{StaticResource LoadingSkeleton}"
+                                            extension:Skeleton.IsBusy="{Binding IsBusy}"
+                                            FontFamily="{StaticResource font_Roboto_Light}"
+                                            FontSize="{OnPlatform Android='19',
+                                                                  iOS='16'}"
+                                            HorizontalOptions="StartAndExpand"
+                                            Text="{Binding Name}"
+                                            VerticalOptions="Center" />
+
+                                        <!--  SEPARAÇÃO  -->
+                                        <BoxView
+                                            Grid.Row="0"
+                                            Grid.Column="0"
+                                            Grid.ColumnSpan="2"
+                                            BackgroundColor="{StaticResource AccentColor}"
+                                            HeightRequest="1"
+                                            HorizontalOptions="FillAndExpand"
+                                            VerticalOptions="End" />
+
+                                    </Grid>
+
+                                </ViewCell>
+
+                            </DataTemplate>
+
+                        </ListView.ItemTemplate>
+
+                    </ListView>
+
+                </StackLayout>
+
+            </Grid>
+
+            <!--  RODAPE  -->
+            <StackLayout
+                Padding="42,5"
+                HorizontalOptions="FillAndExpand"
+                Orientation="Horizontal"
+                Spacing="60"
+                VerticalOptions="Center">
+
+                <!--  CHEVRON-LEFT  -->
+                <Label
+                    FontSize="50"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource FontIcon}"
+                    Text="{x:Static helpers:FontAwesomeFont.CaretLeft}"
+                    TextColor="{StaticResource AccentColor}"
+                    VerticalOptions="Center">
+
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Source={x:Reference PageHeros}, Path=BindingContext.PreviousPageToCommand}" CommandParameter="{x:Reference listViewHeros}" />
+                    </Label.GestureRecognizers>
+
+                </Label>
+
+                <!--  PAGINAS  -->
+                <StackLayout
+                    HeightRequest="1"
+                    HorizontalOptions="FillAndExpand"
+                    InputTransparent="True"
+                    Orientation="Horizontal"
+                    VerticalOptions="FillAndExpand"
+                    WidthRequest="1">
+
+
+                    <ListView
+                        Margin="0,-35,0,-30"
+                        extension:Skeleton.Animation="Fade"
+                        extension:Skeleton.IsBusy="{Binding IsBusy}"
+                        extension:Skeleton.IsParent="True"
+                        BackgroundColor="Transparent"
+                        CachingStrategy="RecycleElement"
+                        HasUnevenRows="True"
+                        InputTransparent="True"
+                        ItemsSource="{Binding Pages}"
+                        Rotation="270"
+                        RowHeight="40"
+                        SeparatorVisibility="None"
+                        Visual="Material"
+                        WidthRequest="100">
+
+                        <ListView.ItemTemplate>
+
+                            <DataTemplate>
+
+                                <ViewCell>
+
+                                    <Grid
+                                        HorizontalOptions="FillAndExpand"
+                                        Rotation="90"
+                                        VerticalOptions="FillAndExpand">
+
+                                        <!--  ICON BACKGROUND  -->
+                                        <Label
+                                            FontSize="40"
+                                            HorizontalOptions="CenterAndExpand"
+                                            HorizontalTextAlignment="Center"
+                                            TextColor="{StaticResource InverseTextColor}"
+                                            VerticalOptions="CenterAndExpand">
+
+                                            <Label.Triggers>
+                                                <DataTrigger
+                                                    Binding="{Binding IsActive}"
+                                                    TargetType="Label"
+                                                    Value="true">
+                                                    <Setter Property="TextColor" Value="{StaticResource AccentColor}" />
+                                                    <Setter Property="Style" Value="{StaticResource RoundShape}" />
+
+                                                </DataTrigger>
+
+                                                <DataTrigger
+                                                    Binding="{Binding IsActive}"
+                                                    TargetType="Label"
+                                                    Value="false">
+                                                    <Setter Property="TextColor" Value="{StaticResource AccentColor}" />
+                                                    <Setter Property="Style" Value="{StaticResource RoundShapeO}" />
+                                                </DataTrigger>
+
+                                            </Label.Triggers>
+
+
+                                        </Label>
+
+                                        <Label
+                                            FontSize="20"
+                                            HorizontalOptions="CenterAndExpand"
+                                            HorizontalTextAlignment="Center"
+                                            Text="{Binding Number}"
+                                            TextColor="{StaticResource AccentColor}"
+                                            VerticalOptions="CenterAndExpand">
+
+                                            <Label.Triggers>
+                                                <DataTrigger
+                                                    Binding="{Binding IsActive}"
+                                                    TargetType="Label"
+                                                    Value="true">
+                                                    <Setter Property="TextColor" Value="{StaticResource InverseTextColor}" />
+                                                </DataTrigger>
+
+                                                <DataTrigger
+                                                    Binding="{Binding IsActive}"
+                                                    TargetType="Label"
+                                                    Value="false">
+                                                    <Setter Property="TextColor" Value="{StaticResource AccentColor}" />
+                                                </DataTrigger>
+
+                                            </Label.Triggers>
+
+                                        </Label>
+
+                                    </Grid>
+
+                                </ViewCell>
+
+                            </DataTemplate>
+
+                        </ListView.ItemTemplate>
+
+                    </ListView>
+
+                </StackLayout>
+
+                <!--  CHEVRON-RIGHT  -->
+                <Label
+                    FontSize="50"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource FontIcon}"
+                    Text="{x:Static helpers:FontAwesomeFont.CaretRight}"
+                    TextColor="{StaticResource AccentColor}"
+                    VerticalOptions="Center">
+
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Source={x:Reference PageHeros}, Path=BindingContext.NextPageToCommand}" CommandParameter="{x:Reference listViewHeros}" />
+                    </Label.GestureRecognizers>
+
+                </Label>
+
+            </StackLayout>
+
+        </StackLayout>
+
+    </ContentPage.Content>
+
+</ContentPage>

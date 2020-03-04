@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application
+    x:Class="SuperHero.App"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:helpers="clr-namespace:SuperHero.Helpers"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:theme="clr-namespace:SuperHero.Themes"
+    mc:Ignorable="d">
+
+    <Application.Resources>
+
+        <ResourceDictionary>
+
+            <ResourceDictionary.MergedDictionaries>
+                <theme:MyAppTheme />
+            </ResourceDictionary.MergedDictionaries>
+
+
+            <!--  FONTS ICONS  -->
+            <OnPlatform
+                x:Key="FontAwesomeFontFamily"
+                x:TypeArguments="x:String"
+                Android="fontawesome.ttf#fontawesome"
+                iOS="fontawesome" />
+
+            <!--  PUT YOUR OWN ICONS FONT FAMILY BELOW  -->
+            <OnPlatform
+                x:Key="IconsFontFamily"
+                x:TypeArguments="x:String"
+                Android="fontawesome.ttf#fontawesome"
+                iOS="fontawesome" />
+
+
+            <!--  FONTS  -->
+            <OnPlatform x:Key="font_Roboto_Black" x:TypeArguments="x:String">
+                <On Platform="Android" Value="Roboto-Black.ttf#Roboto-Black" />
+                <On Platform="iOS" Value="Roboto-Black" />
+            </OnPlatform>
+
+            <OnPlatform x:Key="font_Roboto_Light" x:TypeArguments="x:String">
+                <On Platform="Android" Value="Roboto-Light.ttf#Roboto-Light" />
+                <On Platform="iOS" Value="Roboto-Light" />
+            </OnPlatform>
+
+            <!--  BASE STYLES  -->
+            <Style x:Key="FontIcon" TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource IconsFontFamily}" />
+            </Style>
+
+            <Style x:Key="FontIconBase" TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource FontAwesomeFontFamily}" />
+            </Style>
+
+            <!--  STYLES  -->
+            <Style
+                x:Key="RoundShape"
+                BasedOn="{StaticResource FontIconBase}"
+                TargetType="Label">
+
+                <Setter Property="Text" Value="{x:Static helpers:FontAwesomeFont.Circle}" />
+
+            </Style>
+
+            <Style
+                x:Key="RoundShapeO"
+                BasedOn="{StaticResource FontIconBase}"
+                TargetType="Label">
+
+                <Setter Property="Text" Value="{x:Static helpers:FontAwesomeFont.CircleO}" />
+
+            </Style>
+
+        </ResourceDictionary>
+
+    </Application.Resources>
+
+</Application>

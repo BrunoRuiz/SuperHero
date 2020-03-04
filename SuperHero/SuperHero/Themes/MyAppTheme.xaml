@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="SuperHero.Themes.MyAppTheme">
+
+    <Color x:Key="AccentColor">#D42026</Color>
+    <Color x:Key="BaseTextColor">#D42026</Color>
+
+    <Color x:Key="InverseTextColor">White</Color>
+    <Color x:Key="BaseLightTextColor">#7b7b7b</Color>
+    <Color x:Key="OverImageTextColor">#FFFFFF</Color>
+
+    <Color x:Key="LoadingSkeleton">#B6B6B6</Color>
+
+</ResourceDictionary>

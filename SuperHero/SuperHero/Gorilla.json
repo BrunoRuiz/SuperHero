@@ -1,0 +1,45 @@
+{
+  "localization": {
+    "markupExtension": {
+      "name": "Translate",
+      "namespace": "UXDivers.Artina.Shared",
+      "keyPropertyName": "Key"
+    },
+    "resources": {
+      "resourceId": "SuperHero.Resx.AppResources",
+      "assembly": "SuperHero",
+      "defaultCulture": "en"
+    }
+  },
+  "navigationPage": {
+    "all": [
+      true
+    ],
+    "exclude": [
+      "HerosPage.xaml",
+      "HeroDetailPage.xaml"
+    ]
+  },
+  "clients": [
+    {
+      "kind": "GrialLive",
+      "mappings": [
+        {
+          "from": {
+            "className": "FontAwesomeFont",
+            "namespace": "UXDivers.Artina.Grial"
+          },
+          "to": {
+            "namespace": "SuperHero"
+          }
+        }
+      ]
+    }
+  ],
+  "xaml": {
+    "avoidExpansion": [
+      "Badge.xaml",
+      "Rating.xaml"
+    ]
+  }
+}

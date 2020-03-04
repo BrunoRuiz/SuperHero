@@ -1,0 +1,59 @@
+{
+  "HerosPage.xaml": {
+    "Heros": [
+      {
+        "Name": "3-D Man",
+        "Thumbnail": {
+          "PathImageSource": "http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784.jpg"
+        }
+
+      },
+      {
+        "Name": "A-Bomb (HAS)",
+        "Thumbnail": {
+          "PathImageSource": "http://i.annihil.us/u/prod/marvel/i/mg/3/20/5232158de5b16.jpg"
+        }
+
+      },
+      {
+        "Name": "A.I.M.",
+        "Thumbnail": {
+          "PathImageSource": "http://i.annihil.us/u/prod/marvel/i/mg/6/20/52602f21f29ec.jpg"
+        }
+
+      },
+      {
+        "Name": "Aaron Stack",
+        "Thumbnail": {
+          "PathImageSource": "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg"
+        }
+
+      }
+    ],
+    "Pages": [
+      {
+        "Page": "1",
+        "Active": "false"
+      },
+      {
+        "Page": "2",
+        "Active": "true"
+      },
+      {
+        "Page": "3",
+        "Active": "false"
+      },
+      {
+        "Page": "4",
+        "Active": "false"
+      },
+      {
+        "Page": "5",
+        "Active": "false"
+      }
+    ]
+  },
+  "HeroDetailPage.xaml": {
+    "SourceHTML": "https://www.marvel.com/characters/3-d-man-chandler?utm_campaign=apiRef&utm_source=8605b5601c71eeac0256f6d41f26e54a"
+  }
+}

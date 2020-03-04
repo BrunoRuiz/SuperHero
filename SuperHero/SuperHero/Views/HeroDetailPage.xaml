@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"   
+    mc:Ignorable="d"
+    x:Name="PageHeroDetail"
+    x:Class="SuperHero.Views.HeroDetailPage">
+
+    <ContentPage.Content>
+
+        <StackLayout
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand">
+
+            <WebView                
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand"
+			    Source="{Binding SourceHTML}">
+
+            </WebView>
+
+            <Button                
+                Padding="0"
+                Margin="{OnPlatform Android='10', iOS='20'}"
+                Visual="Material"
+                VerticalOptions="End"
+                Text="Fechar"
+                Command="{Binding Source={x:Reference PageHeroDetail}, 
+                                    Path=BindingContext.ClosePageToCommand}" />
+        </StackLayout>
+
+    </ContentPage.Content>
+
+</ContentPage>
